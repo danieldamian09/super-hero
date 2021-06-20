@@ -1,12 +1,12 @@
-import { Fragment } from 'react';
 import Routes from './routes';
+import HeroesProvaider from './context/heroes/Provaider';
 import './App.css';
 
 function App() {
   return (
-    <Fragment>
+      <HeroesProvaider>
         <Routes />
-    </Fragment>
+      </HeroesProvaider>
   );
 }
 
