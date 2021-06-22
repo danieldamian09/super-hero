@@ -68,7 +68,7 @@ export default function FormHero() {
                             type="password"
                         />
                     </div>
-                    <button type="submit"className="btn btn-primary">Submit</button>
+                    <button type="submit"className="btn btn-primary">Enviar</button>
                 </Form>
             </Formik>
         </div>

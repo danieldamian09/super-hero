@@ -20,7 +20,7 @@ export default function HeroesProvaider({ children }) {
 
     }
 
-    console.log(hero)
+    // console.log(hero)
 
     return (
         <HeroesContext.Provider value={{ getHeroes, heroes, setHero }} >
