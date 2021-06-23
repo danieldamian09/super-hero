@@ -63,14 +63,17 @@ export default function Home() {
     //     })
     // }
 
+    
+
+    
+
     const handleSaveHero = () => {
         // const heroTeam = hero.filter(hero => hero.id !== id)
         setSaveHero([
             ...saveHero,
             { hero }
         ])
-
-        
+        // console.log(hero)
 
     //     if(saveHero && hero){
     //     const id = saveHero[0].hero[0].id
@@ -102,19 +105,20 @@ export default function Home() {
 
     }
 
+    // console.log(heroes)
     // console.log(saveHero)
+    // console.log(saveHero)
+
     
-
-
     return (
         <Fragment>
             {token ? (
                 <div className="container">
                     <header className="col-lg-12 mt-3">
-                        <Team heroes={saveHero} />
+                        {(heroes.length ) ? <Team heroes={saveHero} setSaveHero={setSaveHero}/> : null}
                     </header>
                     <div>
-                        <Search agregarHeros={agregarHeros} agregarHero={agrgarHero} />
+                        <Search agregarHeros={agregarHeros} agregarHero={agrgarHero}  />
                     </div>
                     <div className="mt-5">
                         {(hero) ? (<ResultsSearch heroes={heroes} hero={hero} handleSaveHero={handleSaveHero} />) : <p>No hay resultados</p>}

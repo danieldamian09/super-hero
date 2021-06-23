@@ -1,12 +1,17 @@
 import React, { Fragment } from 'react';
-export default function Team(saveHero) {
+export default function Team({heroes, setSaveHero}) {
 
-    // if(!saveHero.length) return null
-    const { heroes } = saveHero;
+    // console.log(heroes)
+    // console.log(delateHero)
+
+    if(heroes.length === 0) return null
+    // const { heroes } = saveHero;
     
     const prueba = heroes?.map(heroe => heroe?.hero[0])
-    // console.log(prueba)
-    // console.log(prueba[0].name)
+    console.log(prueba)
+    // const id = prueba[0].id
+    // console.log(id)
+
     const intelligence = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.intelligence), 0)
     const strength = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.strength), 0)
     const speed = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.speed), 0)
@@ -15,8 +20,19 @@ export default function Team(saveHero) {
     const combat = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.combat), 0)
     const height = prueba?.reduce((acc, el) => acc + parseInt(el.appearance.height[1]), 0)
     const weight =  prueba?.reduce((acc, el) => acc + parseInt(el.appearance.weight[1]), 0)
+    
+    const delateHero = id => {
+        const UpDateHeroe = heroes?.map(heroe => heroe?.hero[0]).filter(heroe => parseInt(heroe.id) !== id)
+        // ?.filter(heroe => parseInt(heroe.id) !== 69)
+        console.log(UpDateHeroe)
+        // setSaveHero(UpDateHeroe)
+    }
 
     // console.log(prueba.length)
+
+    // eliminar
+    // const prueba2 = prueba?.filter(heroe => parseInt(heroe.id) !== 69)
+    // console.log(prueba2)
 
     return (
         <Fragment>
@@ -40,11 +56,10 @@ export default function Team(saveHero) {
                 <h4>Integrantes del Equipo</h4>
                 {prueba.map(value => (
                     <div className="col mt-2" key={value.id}>
-                    {/* <ul key={value.id}> */}
                         <h5 className="mx-2">{value.name}</h5>
+                        <p>{value.id}</p>
                         <button className="btn btn-primary btn-sm mx-2">Ver Detalle</button>
-                        <button className="btn btn-primary btn-sm">Eliminar</button>
-                    {/* </ul> */}
+                        <button className="btn btn-primary btn-sm" onClick={() => delateHero(parseInt(value.id))}>Eliminar</button>
                     </div>
                 ))}
             </div>
