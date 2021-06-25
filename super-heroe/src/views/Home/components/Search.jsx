@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import apiCall from '../../../api';
 
-export default function Search({ agregarHeros, agregarHero }) {
+export default function Search({ agregarHero }) {
 
     const [errorForm, setErrorForm] = useState(false);
     
@@ -10,7 +10,6 @@ export default function Search({ agregarHeros, agregarHero }) {
             try {
                 const apiKey = `10225291220969322`
                 const heroesResult = await apiCall({ url: `https://www.superheroapi.com/api.php/${apiKey}/search/${hero}` })
-                agregarHeros(heroesResult)
                 agregarHero(heroesResult.results[0])
             } catch (error) {
                 console.log(error)
@@ -32,10 +31,11 @@ export default function Search({ agregarHeros, agregarHero }) {
                     setErrorForm(false)
                     getHeroes(values.hero)
                 }}
+                
             >
                 <Form>
                     {errorForm ? <p>Por favor colocar un nombre</p>: null}
-                    <div className="container search-box">
+                    <div className="container search-box col-lg-6 col-md-12">
                             <label htmlFor="hero" className="form-label"></label>
                         <Field
                             className="form-control"

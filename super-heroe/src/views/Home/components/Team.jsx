@@ -1,65 +1,53 @@
 import React, { Fragment } from 'react';
-export default function Team({heroes, setSaveHero}) {
+export default function Team({saveHero, setSaveHero}) {
 
-    // console.log(heroes)
-    // console.log(delateHero)
-
-    if(heroes.length === 0) return null
-    // const { heroes } = saveHero;
+    if(saveHero.length === 0) return null
     
-    const prueba = heroes?.map(heroe => heroe?.hero[0])
-    console.log(prueba)
-    // const id = prueba[0].id
-    // console.log(id)
+    console.log(saveHero)
 
-    const intelligence = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.intelligence), 0)
-    const strength = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.strength), 0)
-    const speed = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.speed), 0)
-    const durability = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.durability), 0)
-    const power =  prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.power), 0)
-    const combat = prueba?.reduce((acc, el) => acc + parseInt(el.powerstats.combat), 0)
-    const height = prueba?.reduce((acc, el) => acc + parseInt(el.appearance.height[1]), 0)
-    const weight =  prueba?.reduce((acc, el) => acc + parseInt(el.appearance.weight[1]), 0)
-    
+    const calcularPromedio = saveHero.length
+    console.log(calcularPromedio)
+
+    const intelligence = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.intelligence),0)
+    const strength = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.strength),0)
+    const speed = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.speed),0)
+    const durability = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.durability),0)
+    const power = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.power),0)
+    const combat = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.combat),0)
+    const height = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.height[1]),0)
+    const weight  = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.weight[1]),0)
+
     const delateHero = id => {
-        const UpDateHeroe = heroes?.map(heroe => heroe?.hero[0]).filter(heroe => parseInt(heroe.id) !== id)
-        // ?.filter(heroe => parseInt(heroe.id) !== 69)
-        console.log(UpDateHeroe)
-        // setSaveHero(UpDateHeroe)
+        const filtrado = saveHero.filter(el => el.id !== id)
+        setSaveHero(filtrado)
     }
-
-    // console.log(prueba.length)
-
-    // eliminar
-    // const prueba2 = prueba?.filter(heroe => parseInt(heroe.id) !== 69)
-    // console.log(prueba2)
+    
 
     return (
         <Fragment>
-            {(prueba.length)? (
+            {(saveHero.length)? (
         <div className="container">
             <div className="row">
                 <div className="col-lg-6">
-                <h4>Acumulativo de powerstats Equipo</h4>
+                <h4 className="text-light">Acumulativo de powerstats Equipo</h4>
                 <ul>
-                <li>🧙Intelligence: {intelligence}</li>
-                <li>🏋️‍♂️Strength: {strength}</li>
-                <li>⚡Speed: {speed}</li>
-                <li>🔋Durability: {durability}</li>
-                <li>⚔️Power: {power}</li>
-                <li>🤜Combat: {combat}</li>
-                <li>🚀Altura: {height}cm</li>
-                <li>🏗️Peso: {weight}Kg</li>
+                <li className="text-light">🧙Intelligence: {intelligence}</li>
+                <li className="text-light">🏋️‍♂️Strength: {strength}</li>
+                <li className="text-light">⚡Speed: {speed}</li>
+                <li className="text-light">🔋Durability: {durability}</li>
+                <li className="text-light">⚔️Power: {power}</li>
+                <li className="text-light">🤜Combat: {combat}</li>
+                <li className="text-light">🚀Altura Promedio: {height / calcularPromedio}cm</li>
+                <li className="text-light">🏗️Peso Promedio: {weight / calcularPromedio}Kg</li>
             </ul>
             </div>
             <div className="col-lg-6">
-                <h4>Integrantes del Equipo</h4>
-                {prueba.map(value => (
+                <h4 className="text-light">Integrantes del Equipo</h4>
+                {saveHero.map(value => (
                     <div className="col mt-2" key={value.id}>
-                        <h5 className="mx-2">{value.name}</h5>
-                        <p>{value.id}</p>
-                        <button className="btn btn-primary btn-sm mx-2">Ver Detalle</button>
-                        <button className="btn btn-primary btn-sm" onClick={() => delateHero(parseInt(value.id))}>Eliminar</button>
+                        <h5 className="mx-2 text-light">{value.name}</h5>
+                        <button className="btn btn-success btn-sm mx-2">Ver Detalle</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => delateHero(value.id)}>Eliminar</button>
                     </div>
                 ))}
             </div>
