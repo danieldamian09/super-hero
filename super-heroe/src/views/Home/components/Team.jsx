@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-export default function Team({saveHero, setSaveHero}) {
+export default function Team({saveHero}) {
 
     if(saveHero.length === 0) return null
     
@@ -17,41 +17,35 @@ export default function Team({saveHero, setSaveHero}) {
     const height = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.height[1]),0)
     const weight  = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.weight[1]),0)
 
-    const delateHero = id => {
-        const filtrado = saveHero.filter(el => el.id !== id)
-        setSaveHero(filtrado)
-    }
+    
     
 
     return (
         <Fragment>
             {(saveHero.length)? (
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-6">
-                <h4 className="text-light">Acumulativo de powerstats Equipo</h4>
-                <ul>
-                <li className="text-light">🧙Intelligence: {intelligence}</li>
-                <li className="text-light">🏋️‍♂️Strength: {strength}</li>
-                <li className="text-light">⚡Speed: {speed}</li>
-                <li className="text-light">🔋Durability: {durability}</li>
-                <li className="text-light">⚔️Power: {power}</li>
-                <li className="text-light">🤜Combat: {combat}</li>
-                <li className="text-light">🚀Altura Promedio: {height / calcularPromedio}cm</li>
-                <li className="text-light">🏗️Peso Promedio: {weight / calcularPromedio}Kg</li>
-            </ul>
+        <div className="container mx-auto">
+
+            <h2 className="text-light text-center">Acumulativo de powerstats Equipo</h2>
+            <div className=" border-dark bg-dark">
+                
+                
+                <label htmlFor="intelligence" className="text-light">🧙Intelligence: {intelligence}</label><br/>
+                <progress id="intelligence" max="100" value={intelligence/saveHero.length}></progress><br/>
+                <label htmlFor="strength" className="text-light">🏋️‍♂️Strength: {strength}</label><br/>
+                <progress id="strength" max="100" value={strength/saveHero.length}></progress><br/>
+                <label htmlFor="speed" className="text-light">⚡Speed: {speed}</label><br/>
+                <progress id="speed" max="100" value={speed/saveHero.length}></progress><br/>
+                <label htmlFor="durability" className="text-light">🔋Durability: {durability}</label><br/>
+                <progress id="durability" max="100" value={durability/saveHero.length}></progress><br/>
+                <label htmlFor="power" className="text-light">⚔️Power: {power}</label><br/>
+                <progress id="power" max="100" value={power/saveHero.length}></progress><br/>
+                <label htmlFor="combat" className="text-light">🤜Combat: {combat}</label><br/>
+                <progress id="combat" max="100" value={combat/saveHero.length}></progress><br/><br/>
+
+                <p className="text-light">🚀Altura Promedio: {parseFloat(height / calcularPromedio, 10).toFixed(2)}cm</p>
+                <p className="text-light">🏗️Peso Promedio: {parseFloat(weight / calcularPromedio, 10).toFixed(2)}Kg</p>
             </div>
-            <div className="col-lg-6">
-                <h4 className="text-light">Integrantes del Equipo</h4>
-                {saveHero.map(value => (
-                    <div className="col mt-2" key={value.id}>
-                        <h5 className="mx-2 text-light">{value.name}</h5>
-                        <button className="btn btn-success btn-sm mx-2">Ver Detalle</button>
-                        <button className="btn btn-danger btn-sm" onClick={() => delateHero(value.id)}>Eliminar</button>
-                    </div>
-                ))}
-            </div>
-            </div>
+            
         </div>
             )
         :null
@@ -61,3 +55,5 @@ export default function Team({saveHero, setSaveHero}) {
         
     )
 }
+
+

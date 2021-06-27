@@ -3,39 +3,37 @@ export default function ResultsSearch({hero, handleSaveHero}) {
 
     if(!hero) return null;
 
-    const { name, image, powerstats, appearance, work } = hero;
+    const { name, image, powerstats, appearance, work, biography } = hero;
+
+    if(!biography) return null
+    const valores = Object.values(biography);
+    console.log(valores)
 
 
     return (
         <Fragment>
             {(name || image) ? (
-            <div className="row w-80 mx-auto col-lg-6 col-md-12">
-            <div className="d-flex justify-content-center  my-2 icono-wrap">
-                <div className="card border-dark" style={{width: '18rem'}}>
-                    <img src={image.url} className="card-img-top" alt={name}/>
-                    <div className="card-body bg-dark">
-                        <h5 className="card-title text-light">{name}</h5>
-                        <ol>
-                            <li className="text-light">intelligence: {powerstats.intelligence}</li>
-                            <li className="text-light">strength: {powerstats.strength}</li>
-                            <li className="text-light">speed: {powerstats.speed}</li>
-                            <li className="text-light">durability: {powerstats.durability}</li>
-                            <li className="text-light">power: {powerstats.power}</li>
-                            <li className="text-light">combat: {powerstats.combat}</li>
-                            <li className="text-light">height: {appearance.height[1]}</li>
-                            <li className="text-light">weight: {appearance.weight[1]}</li>
-                        </ol>
-                        <p className="text-light">{work.base}</p>
-                        <div className="d-flex justify-content-between">
-                            <button onClick={handleSaveHero} className="btn btn-primary">Agregar</button>
-                            <button className="btn btn-primary">Ver detalle</button>
+            <div className=" mx-auto col-lg-12 col-md-12 mt-3">
+                <div class="card mb-3 bg-dark" >
+                    <div class="row g-0">
+                        <div class="col-md-4 " >
+                            <img src={image.url} class="img-fluid rounded" alt={name} />
+                        </div>
+                        <div className="col-md-8">
+                            <div className="card-body">
+                                <h4 className="card-title text-light">{name}</h4>
+                                <p className="text-light">Nombre Completo: {valores[0]}</p>
+                                <p className="text-light">Editora: {biography.publisher}</p>
+                                <p className="text-light">Lugar de Nacimiento: {valores[3]}</p>
+                                <button onClick={handleSaveHero} className="btn btn-primary">Agregar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         ):
     null}
         </Fragment>
     )
 }
+

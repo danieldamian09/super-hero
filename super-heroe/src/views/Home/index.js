@@ -4,6 +4,7 @@ import Search from './components/Search';
 import ResultsSearch from './components/ResultsSearch';
 import Team from './components/Team';
 import Navbar from './components/Navbar';
+import TeamDetail from './components/TeamDetail';
 
 
 export default function Home() {
@@ -48,16 +49,16 @@ export default function Home() {
             {token ? (
                 <div className="container">
                     <h1>Super-Hero App</h1>
-                    <header className="col-lg-12 mt-3">
-                        
-                        {(saveHero) ? <Team saveHero={saveHero} setSaveHero={setSaveHero} /> : null}
-                    </header>
-                    <div>
+                    <header className="col-lg-8 mt-3 mx-auto">
                         <Search agregarHero={agregarHero} />
-                    </div>
-                    <div className="mt-5">
                         {(hero) ? (<ResultsSearch hero={hero} handleSaveHero={handleSaveHero} />) : <p>No hay resultados</p>}
+                    </header>
+                    <div className="col-lg-8 mt-3 mx-auto">
+                        {(saveHero) ? <Team saveHero={saveHero} /> : null}
                     </div>
+                        <div className="row w-80 mx-auto">
+                            <TeamDetail saveHero={saveHero} setSaveHero={setSaveHero} />
+                        </div>
                 </div>)
                 : <p>Por favor Iniciar Session</p>}
         </Fragment>
