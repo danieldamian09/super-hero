@@ -2,7 +2,7 @@ import { Fragment} from "react"
 
 export default function TeamDetail({saveHero, setSaveHero}) {
 
-    if(saveHero.length === 7) return null
+    if(saveHero.length === 0) return null
 
     // eliminar heroe del equipo
     const delateHero = id => {

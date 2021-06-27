@@ -1,12 +1,9 @@
 import React, { Fragment } from 'react';
-export default function Team({saveHero, hero}) {
+export default function Team({saveHero}) {
 
     if(saveHero.length === 0) return null
-    
-    // console.log(saveHero)
 
     const calcularPromedio = saveHero.length
-    // console.log(calcularPromedio)
 
     const intelligence = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.intelligence),0)
     const strength = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.strength),0)
@@ -16,27 +13,10 @@ export default function Team({saveHero, hero}) {
     const combat = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.combat),0)
     const height = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.height[1]),0)
     const weight  = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.weight[1]),0)
-
-    // calculo promedio logica ------------------------------------------
-    const totalPowerstats = intelligence + strength + speed + durability + power + combat
-    // console.log(totalPowerstats)
-    const promPowerstats = totalPowerstats / saveHero.length
-    console.log(promPowerstats)
-
-    if(hero.length) return null
-    const { powerstats } = hero;
-    // console.log(powerstats)
-    const prueba5 = Object.values(powerstats);
-    // console.log(prueba5)
-    const prueba6 = prueba5.reduce((acc, el) => acc + parseInt(el),0)
-    // console.log(prueba6)
     
-    if(prueba6 >= promPowerstats){
-        console.log("es bueno")
-    }else{
-        console.log("es malo")
-    }
-    // calculo para el promedio logica ------------------------------------
+    const powerstats = [];
+    powerstats.push(intelligence, strength, speed, durability, power, combat)
+    const ordenados = powerstats.sort()
 
     return (
         <Fragment>
@@ -46,6 +26,7 @@ export default function Team({saveHero, hero}) {
             <h2 className="text-light text-center">Acumulativo de powerstats Equipo</h2>
             <div className=" border-dark bg-dark">
                 
+                <p className="text-light text-center">El mayor de los powerstats es {ordenados[5]} </p>
                 
                 <label htmlFor="intelligence" className="text-light">🧙Intelligence: {intelligence}</label><br/>
                 <progress id="intelligence" max="100" value={intelligence/saveHero.length}></progress><br/>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import axios from 'axios';
+import Mesage from '../../../Home/components/Mesage';
 
 export default function FormHero() {
 
@@ -30,7 +31,7 @@ export default function FormHero() {
     };
 
     return (
-        <div className="container col-lg-4">
+        <div className="container col-lg-4 mt-5 ">
             <h1>Iniciar Sesión</h1>
             <Formik
                 initialValues={{
@@ -45,21 +46,21 @@ export default function FormHero() {
                     handleButton(values)
                 }}
             >
-                <Form>
-                    {errorForm ? <p>{mesageError}</p> : null}
+                <Form className="border-dark">
+                    {errorForm ? <Mesage text={mesageError} /> : null}
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email</label>
+                        <label htmlFor="email" className="form-label text-light">Email</label>
                         <Field
                             className="form-control"
                             id="email"
                             name="email"
-                            placeholder="jane@acme.com"
+                            placeholder="challenge@alkemy.org"
                             type="email"
                         />
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Password</label>
+                        <label htmlFor="email" className="form-label text-light">Password</label>
                         <Field
                             className="form-control"
                             id="password"
@@ -68,7 +69,9 @@ export default function FormHero() {
                             type="password"
                         />
                     </div>
+                    <div class="d-grid gap-2">
                     <button type="submit"className="btn btn-primary">Enviar</button>
+                    </div>
                 </Form>
             </Formik>
         </div>
