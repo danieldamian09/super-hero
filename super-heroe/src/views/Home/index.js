@@ -5,6 +5,7 @@ import ResultsSearch from './components/ResultsSearch';
 import Team from './components/Team';
 import Navbar from './components/Navbar';
 import TeamDetail from './components/TeamDetail';
+import Mesage from './components/Mesage';
 
 
 export default function Home() {
@@ -51,7 +52,7 @@ export default function Home() {
                     <h1>Super-Hero App</h1>
                     <header className="col-lg-8 mt-3 mx-auto">
                         <Search agregarHero={agregarHero} />
-                        {(hero) ? (<ResultsSearch hero={hero} handleSaveHero={handleSaveHero} />) : <p>No hay resultados</p>}
+                        {(hero) ? (<ResultsSearch hero={hero} handleSaveHero={handleSaveHero} />) : <Mesage text="no hay resultados" />}
                     </header>
                     <div className="col-lg-8 mt-3 mx-auto">
                         {(saveHero) ? <Team saveHero={saveHero} /> : null}

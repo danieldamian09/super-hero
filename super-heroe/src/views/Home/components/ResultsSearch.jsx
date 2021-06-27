@@ -7,17 +7,17 @@ export default function ResultsSearch({hero, handleSaveHero}) {
 
     if(!biography) return null
     const valores = Object.values(biography);
-    console.log(valores)
+    // console.log(valores)
 
 
     return (
         <Fragment>
             {(name || image) ? (
             <div className=" mx-auto col-lg-12 col-md-12 mt-3">
-                <div class="card mb-3 bg-dark" >
-                    <div class="row g-0">
-                        <div class="col-md-4 " >
-                            <img src={image.url} class="img-fluid rounded" alt={name} />
+                <div className="card mb-3 bg-dark" >
+                    <div className="row g-0">
+                        <div className="col-md-4 " >
+                            <img src={image.url} className="img-fluid rounded" alt={name} />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">

@@ -12,13 +12,13 @@ export default function TeamDetail({saveHero, setSaveHero}) {
     return (
         <Fragment>
             {(saveHero.length)?
-            <div className="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center my-2 icono-wrap flex-wrap">
+            <div className="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center my-2 icono-wrap flex-wrap" >
                 {saveHero.map(value => (
-                    <div className="card border-dark col-lg-3 col-md-6 col-sm-8 mx-lg-2 mt-2" >
+                    <div className="card border-dark col-lg-3 col-md-6 col-sm-8 mx-lg-2 mt-2" key={value.id}>
                         <img src={value.image.url} className="card-img-top" alt={value.name}/>
                     <div className="card-body bg-dark">
                         <h5 className="card-title text-light">{value.name}</h5>
-                        <ol key={value.id}>
+                        <ol>
                             <li className="text-light">intelligence: {value.powerstats.intelligence}</li>
                             <li className="text-light">strength: {value.powerstats.strength}</li>
                             <li className="text-light">speed: {value.powerstats.speed}</li>

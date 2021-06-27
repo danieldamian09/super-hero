@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import apiCall from '../../../api';
+import Mesage from './Mesage';
 
 export default function Search({ agregarHero }) {
 
     const [errorForm, setErrorForm] = useState(false);
+    const [errorResult, setErrorResult] = useState(false)
     
     const getHeroes = async (hero) => {
             try {
@@ -13,6 +15,9 @@ export default function Search({ agregarHero }) {
                 agregarHero(heroesResult.results[0])
             } catch (error) {
                 console.log(error)
+                if(error){
+                    setErrorResult(true)
+                }
             }
         }
 
@@ -30,11 +35,14 @@ export default function Search({ agregarHero }) {
                     }
                     setErrorForm(false)
                     getHeroes(values.hero)
+                    setErrorResult(false)
                 }}
                 
             >
                 <Form>
-                    {errorForm ? <p>Por favor colocar un nombre</p>: null}
+                    {errorForm ? <Mesage text="Por favor colocar un nombre" /> : null}
+                    {errorResult ? <Mesage text="lo sentimos no hay resultados" /> : null}
+
                     <div className="container search-box col-lg-6 col-md-12">
                             <label htmlFor="hero" className="form-label"></label>
                         <Field

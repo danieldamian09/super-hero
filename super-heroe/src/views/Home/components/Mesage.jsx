@@ -1,7 +1,7 @@
-export default function Mesage() {
+export default function Mesage({text}) {
     return (
-        <div>
-            
+        <div className="alert alert-danger" role="alert">
+            {text}
         </div>
     )
 }

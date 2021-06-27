@@ -3,10 +3,10 @@ export default function Team({saveHero}) {
 
     if(saveHero.length === 0) return null
     
-    console.log(saveHero)
+    // console.log(saveHero)
 
     const calcularPromedio = saveHero.length
-    console.log(calcularPromedio)
+    // console.log(calcularPromedio)
 
     const intelligence = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.intelligence),0)
     const strength = saveHero.reduce((acc,el) => acc + parseInt(el.powerstats.strength),0)
