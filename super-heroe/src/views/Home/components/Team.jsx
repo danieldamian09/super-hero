@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-export default function Team({saveHero}) {
+export default function Team({saveHero, hero}) {
 
     if(saveHero.length === 0) return null
     
@@ -17,8 +17,26 @@ export default function Team({saveHero}) {
     const height = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.height[1]),0)
     const weight  = saveHero.reduce((acc,el) => acc + parseInt(el.appearance.weight[1]),0)
 
+    // calculo promedio logica ------------------------------------------
+    const totalPowerstats = intelligence + strength + speed + durability + power + combat
+    // console.log(totalPowerstats)
+    const promPowerstats = totalPowerstats / saveHero.length
+    console.log(promPowerstats)
+
+    if(hero.length) return null
+    const { powerstats } = hero;
+    // console.log(powerstats)
+    const prueba5 = Object.values(powerstats);
+    // console.log(prueba5)
+    const prueba6 = prueba5.reduce((acc, el) => acc + parseInt(el),0)
+    // console.log(prueba6)
     
-    
+    if(prueba6 >= promPowerstats){
+        console.log("es bueno")
+    }else{
+        console.log("es malo")
+    }
+    // calculo para el promedio logica ------------------------------------
 
     return (
         <Fragment>

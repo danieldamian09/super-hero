@@ -1,9 +1,10 @@
-import { Fragment } from "react"
+import { Fragment} from "react"
 
 export default function TeamDetail({saveHero, setSaveHero}) {
 
     if(saveHero.length === 7) return null
 
+    // eliminar heroe del equipo
     const delateHero = id => {
         const filtrado = saveHero.filter(el => el.id !== id)
         setSaveHero(filtrado)
@@ -11,7 +12,7 @@ export default function TeamDetail({saveHero, setSaveHero}) {
 
     return (
         <Fragment>
-            {(saveHero.length)?
+            {(saveHero.length)? (
             <div className="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center my-2 icono-wrap flex-wrap" >
                 {saveHero.map(value => (
                     <div className="card border-dark col-lg-3 col-md-6 col-sm-8 mx-lg-2 mt-2" key={value.id}>
@@ -34,7 +35,7 @@ export default function TeamDetail({saveHero, setSaveHero}) {
                     </div>
                 ))}
             </div>    
-        : null
+            ): null
         }
         </Fragment>
     )

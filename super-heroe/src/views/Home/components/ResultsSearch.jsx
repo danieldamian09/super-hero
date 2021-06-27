@@ -3,7 +3,7 @@ export default function ResultsSearch({hero, handleSaveHero}) {
 
     if(!hero) return null;
 
-    const { name, image, powerstats, appearance, work, biography } = hero;
+    const { name, image, biography } = hero;
 
     if(!biography) return null
     const valores = Object.values(biography);

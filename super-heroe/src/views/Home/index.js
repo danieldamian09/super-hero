@@ -27,6 +27,7 @@ export default function Home() {
         )
     }
 
+
     useEffect(() => {
         getTokenLocalStorge();
     }, [])
@@ -44,6 +45,7 @@ export default function Home() {
         history.push("/")
     }
 
+
     return (
         <Fragment>
             <Navbar exit={exit} />
@@ -55,9 +57,10 @@ export default function Home() {
                         {(hero) ? (<ResultsSearch hero={hero} handleSaveHero={handleSaveHero} />) : <Mesage text="no hay resultados" />}
                     </header>
                     <div className="col-lg-8 mt-3 mx-auto">
-                        {(saveHero) ? <Team saveHero={saveHero} /> : null}
+                        {(saveHero) ? <Team saveHero={saveHero} hero={hero} /> : null}
                     </div>
                         <div className="row w-80 mx-auto">
+                        {(saveHero.length) ? <h2 className="text-light text-center" id="equipo">Equipo</h2> : null}
                             <TeamDetail saveHero={saveHero} setSaveHero={setSaveHero} />
                         </div>
                 </div>)

@@ -27,7 +27,7 @@ export default function Search({ agregarHero }) {
                 initialValues={{
                     hero: '',
                 }}
-                onSubmit={(values) => {
+                onSubmit={(values, { resetForm }) => {
                     const { hero } = values;
                     if(hero.trim() === ""){
                         setErrorForm(true)
@@ -36,6 +36,8 @@ export default function Search({ agregarHero }) {
                     setErrorForm(false)
                     getHeroes(values.hero)
                     setErrorResult(false)
+                    resetForm();
+
                 }}
                 
             >
@@ -52,7 +54,7 @@ export default function Search({ agregarHero }) {
                             placeholder="colocar el nombre del super heroe"
                             type="text"
                         />
-                        <button type="submit"className="btn btn-primary mt-3">Buscar</button>
+                        <button type="submit"className="btn btn-primary mt-3" >Buscar</button>
                     </div>
                 </Form>
             </Formik>
